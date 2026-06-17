@@ -66,6 +66,43 @@ body {
   font-weight: 600;
 }
 
+.noti-zone {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.noti-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.noti-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 107, 107, 0.45); }
+.noti-btn:active { transform: translateY(0); }
+.noti-btn[disabled] { opacity: 0.6; cursor: default; }
+
+.noti-status {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 320px;
+  line-height: 1.4;
+}
+
+.noti-status.ok { color: #2A9D5C; font-weight: 600; }
+.noti-status.warn { color: #B85C20; }
+.noti-status.err { color: #C24545; }
+
 main {
   padding: 0 16px 40px;
   max-width: 720px;

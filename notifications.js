@@ -1,0 +1,122 @@
+(() => {
+  const btn = document.getElementById('noti-btn');
+  const status = document.getElementById('noti-status');
+  const HOUR = 9;
+  const LS_KEY = 'papi-medallas:scheduled';
+
+  function setStatus(text, kind = '') {
+    status.className = 'noti-status' + (kind ? ' ' + kind : '');
+    status.textContent = text;
+  }
+
+  const supported = {
+    notification: 'Notification' in window,
+    serviceWorker: 'serviceWorker' in navigator,
+    trigger: 'TimestampTrigger' in window
+  };
+
+  if (!supported.notification || !supported.serviceWorker) {
+    setStatus('Tu navegador no soporta notificaciones.', 'warn');
+    return;
+  }
+
+  btn.hidden = false;
+
+  function reflectState() {
+    const perm = Notification.permission;
+    if (perm === 'denied') {
+      btn.disabled = true;
+      btn.textContent = '🔕 Notificaciones bloqueadas';
+      setStatus('Activalas desde la configuración del navegador.', 'err');
+      return;
+    }
+    if (perm === 'granted') {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        btn.disabled = true;
+        btn.textContent = '✅ Recordatorios activos';
+        if (supported.trigger) {
+          setStatus(`Programados ${saved} recordatorios a las ${HOUR}:00. Tu papá los recibirá aunque cierre la app.`, 'ok');
+        } else {
+          setStatus(`Tu navegador no programa recordatorios sin servidor — te avisaremos cuando abras la app cada día.`, 'warn');
+        }
+      } else {
+        btn.disabled = false;
+        btn.textContent = '🔔 Programar mis recordatorios';
+      }
+      return;
+    }
+    btn.disabled = false;
+    btn.textContent = '🔔 Activar recordatorios diarios';
+    setStatus('Te recordaremos cada día a las 9 de la mañana.');
+  }
+
+  async function getData() {
+    const r = await fetch('data/reconocimientos.json');
+    return r.json();
+  }
+
+  async function scheduleAll() {
+    const data = await getData();
+    const reg = await navigator.serviceWorker.ready;
+    const now = Date.now();
+    let scheduled = 0;
+
+    // Clear previous scheduled notifications (if any)
+    const existing = await reg.getNotifications({ includeTriggered: true });
+    existing.forEach(n => n.close());
+
+    for (const item of data.reconocimientos) {
+      const [y, m, d] = item.fecha.split('-').map(Number);
+      const when = new Date(y, m - 1, d, HOUR, 0, 0).getTime();
+      if (when < now) continue;
+
+      const options = {
+        body: item.titulo,
+        icon: 'assets/icons/icon-192.png',
+        badge: 'assets/icons/icon-192.png',
+        tag: `papi-medalla-${item.id}`,
+        data: { id: item.id, fecha: item.fecha },
+        requireInteraction: false
+      };
+
+      if (supported.trigger) {
+        options.showTrigger = new TimestampTrigger(when);
+      }
+
+      try {
+        await reg.showNotification(`${item.emoji} Nueva medalla para ti`, options);
+        scheduled++;
+      } catch (e) {
+        console.warn('No pude programar', item.id, e);
+      }
+    }
+    return scheduled;
+  }
+
+  async function onClick() {
+    btn.disabled = true;
+    setStatus('Pidiendo permiso…');
+    try {
+      const perm = await Notification.requestPermission();
+      if (perm !== 'granted') {
+        reflectState();
+        return;
+      }
+      const count = await scheduleAll();
+      if (count === 0) {
+        setStatus('No hay días futuros para programar.', 'warn');
+        btn.disabled = false;
+        return;
+      }
+      localStorage.setItem(LS_KEY, String(count));
+      reflectState();
+    } catch (e) {
+      setStatus('Error: ' + e.message, 'err');
+      btn.disabled = false;
+    }
+  }
+
+  btn.addEventListener('click', onClick);
+  reflectState();
+})();

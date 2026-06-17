@@ -1,12 +1,15 @@
-const CACHE = 'papi-medallas-v1';
+const CACHE = 'papi-medallas-v2';
 const ASSETS = [
   './',
   'index.html',
   'style.css',
   'app.js',
+  'notifications.js',
   'manifest.json',
   'data/reconocimientos.json',
-  'assets/icons/icon.svg'
+  'assets/icons/icon.svg',
+  'assets/icons/icon-192.png',
+  'assets/icons/icon-512.png'
 ];
 
 self.addEventListener('install', (e) => {
@@ -17,6 +20,24 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  const fecha = e.notification.data && e.notification.data.fecha;
+  const url = fecha ? `./?abrir=${fecha}` : './';
+  e.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clients) => {
+      for (const c of clients) {
+        if (c.url.includes(self.registration.scope)) {
+          c.focus();
+          c.postMessage({ type: 'abrir-medalla', fecha });
+          return;
+        }
+      }
+      return self.clients.openWindow(url);
+    })
   );
 });
 

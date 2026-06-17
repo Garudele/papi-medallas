@@ -106,12 +106,32 @@ modal.addEventListener('click', (e) => {
   }
 });
 
+let currentData = null;
+
+function abrirPorFecha(fecha) {
+  if (!currentData || !fecha) return;
+  const item = currentData.reconocimientos.find(r => r.fecha === fecha);
+  if (item && estado(item.fecha, todayKey()) !== 'locked') abrirModal(item);
+}
+
 fetch('data/reconocimientos.json')
   .then(r => r.json())
-  .then(render)
+  .then(data => {
+    currentData = data;
+    render(data);
+    const params = new URLSearchParams(location.search);
+    const abrir = params.get('abrir');
+    if (abrir) abrirPorFecha(abrir);
+  })
   .catch(err => {
     grid.innerHTML = `<p style="color:#c00;padding:20px;">No pude cargar los reconocimientos: ${err.message}</p>`;
   });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'abrir-medalla') abrirPorFecha(e.data.fecha);
+  });
+}
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
