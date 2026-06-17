@@ -1,4 +1,4 @@
-const CACHE = 'papi-medallas-v2';
+const CACHE = 'papi-medallas-v3';
 const ASSETS = [
   './',
   'index.html',
@@ -6,7 +6,7 @@ const ASSETS = [
   'app.js',
   'notifications.js',
   'manifest.json',
-  'data/reconocimientos.json',
+  'data/encrypted.json',
   'assets/icons/icon.svg',
   'assets/icons/icon-192.png',
   'assets/icons/icon-512.png'

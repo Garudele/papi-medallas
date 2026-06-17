@@ -1,4 +1,5 @@
-(() => {
+document.addEventListener('app-unlocked', (e) => {
+  const decryptedData = e.detail.data;
   const btn = document.getElementById('noti-btn');
   const status = document.getElementById('noti-status');
   const HOUR = 9;
@@ -51,22 +52,15 @@
     setStatus('Te recordaremos cada día a las 9 de la mañana.');
   }
 
-  async function getData() {
-    const r = await fetch('data/reconocimientos.json');
-    return r.json();
-  }
-
   async function scheduleAll() {
-    const data = await getData();
     const reg = await navigator.serviceWorker.ready;
     const now = Date.now();
     let scheduled = 0;
 
-    // Clear previous scheduled notifications (if any)
     const existing = await reg.getNotifications({ includeTriggered: true });
     existing.forEach(n => n.close());
 
-    for (const item of data.reconocimientos) {
+    for (const item of decryptedData.reconocimientos) {
       const [y, m, d] = item.fecha.split('-').map(Number);
       const when = new Date(y, m - 1, d, HOUR, 0, 0).getTime();
       if (when < now) continue;
@@ -80,15 +74,13 @@
         requireInteraction: false
       };
 
-      if (supported.trigger) {
-        options.showTrigger = new TimestampTrigger(when);
-      }
+      if (supported.trigger) options.showTrigger = new TimestampTrigger(when);
 
       try {
         await reg.showNotification(`${item.emoji} Nueva medalla para ti`, options);
         scheduled++;
-      } catch (e) {
-        console.warn('No pude programar', item.id, e);
+      } catch (err) {
+        console.warn('No pude programar', item.id, err);
       }
     }
     return scheduled;
@@ -99,10 +91,7 @@
     setStatus('Pidiendo permiso…');
     try {
       const perm = await Notification.requestPermission();
-      if (perm !== 'granted') {
-        reflectState();
-        return;
-      }
+      if (perm !== 'granted') { reflectState(); return; }
       const count = await scheduleAll();
       if (count === 0) {
         setStatus('No hay días futuros para programar.', 'warn');
@@ -111,12 +100,12 @@
       }
       localStorage.setItem(LS_KEY, String(count));
       reflectState();
-    } catch (e) {
-      setStatus('Error: ' + e.message, 'err');
+    } catch (err) {
+      setStatus('Error: ' + err.message, 'err');
       btn.disabled = false;
     }
   }
 
   btn.addEventListener('click', onClick);
   reflectState();
-})();
+});

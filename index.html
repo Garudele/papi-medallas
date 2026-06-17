@@ -11,6 +11,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="lock-screen" class="lock-screen">
+    <div class="lock-card">
+      <div class="lock-emoji">🎁</div>
+      <h2>Un regalo te espera</h2>
+      <p class="lock-hint">Solo tú sabes la contraseña.</p>
+      <form id="lock-form">
+        <input type="password" id="lock-input" autocomplete="off" placeholder="Contraseña" required>
+        <button type="submit">Abrir 💛</button>
+      </form>
+      <p id="lock-error" class="lock-error" hidden>Contraseña incorrecta</p>
+    </div>
+  </div>
+
+  <div id="app-wrap" hidden>
   <header class="hero">
     <div class="hero-emoji">🎖️</div>
     <h1 id="titulo">Para Papá</h1>
@@ -29,6 +43,7 @@
   <footer class="footer">
     <p>Hecho con 💖</p>
   </footer>
+  </div>
 
   <dialog id="modal" class="modal" aria-labelledby="modal-titulo">
     <button class="modal-close" aria-label="Cerrar" data-close>✕</button>
