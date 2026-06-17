@@ -1,0 +1,106 @@
+{
+  "destinatario": "Papá",
+  "subtitulo": "Tu mes de medallas",
+  "reconocimientos": [
+    {
+      "id": 1,
+      "fecha": "2026-06-21",
+      "titulo": "Mejor Papá del Universo",
+      "emoji": "🥇",
+      "etiqueta": "Día del Padre",
+      "mensaje": "Hoy es tu día, y quiero que sepas que ser papá te queda perfecto. Gracias por amarnos como nos amas.",
+      "foto": "assets/fotos/dia-21.jpg",
+      "color": "#FFB454"
+    },
+    {
+      "id": 2,
+      "fecha": "2026-06-22",
+      "titulo": "Maestro del Biberón a 37°",
+      "emoji": "🍼",
+      "etiqueta": "Precisión nivel chef",
+      "mensaje": "Ese biberón a la temperatura exacta es magia. Nadie lo hace como tú.",
+      "foto": "assets/fotos/dia-22.jpg",
+      "color": "#FF8FA3"
+    },
+    {
+      "id": 3,
+      "fecha": "2026-06-23",
+      "titulo": "Campeón del Brazo-Cuna",
+      "emoji": "💪",
+      "etiqueta": "Resistencia infinita",
+      "mensaje": "Tu brazo es el lugar más seguro del mundo. Verte cargarla me derrite.",
+      "foto": "assets/fotos/dia-23.jpg",
+      "color": "#FFB454"
+    },
+    {
+      "id": 4,
+      "fecha": "2026-06-24",
+      "titulo": "Detective del Llanto Misterioso",
+      "emoji": "🔍",
+      "etiqueta": "Caso resuelto en segundos",
+      "mensaje": "Tienes un radar para saber qué necesita ella. Me sorprende cada vez.",
+      "foto": "assets/fotos/dia-24.jpg",
+      "color": "#FF8C66"
+    },
+    {
+      "id": 5,
+      "fecha": "2026-06-25",
+      "titulo": "Cantor Oficial de Arrullos",
+      "emoji": "🎵",
+      "etiqueta": "Voz que duerme bebés",
+      "mensaje": "Tu voz es su canción favorita. Y también la mía.",
+      "foto": "assets/fotos/dia-25.jpg",
+      "color": "#F4B942"
+    },
+    {
+      "id": 6,
+      "fecha": "2026-06-26",
+      "titulo": "Guardián del Sueño Sagrado",
+      "emoji": "😴",
+      "etiqueta": "Silencio nivel ninja",
+      "mensaje": "Caminas en puntitas como si fueras espía. Gracias por cuidar cada siesta.",
+      "foto": "assets/fotos/dia-26.jpg",
+      "color": "#9B8CFF"
+    },
+    {
+      "id": 7,
+      "fecha": "2026-06-27",
+      "titulo": "Fotógrafo de Caras Chistosas",
+      "emoji": "📸",
+      "etiqueta": "Archivero oficial de risas",
+      "mensaje": "Sin ti no tendríamos estas fotos que vamos a ver felices toda la vida.",
+      "foto": "assets/fotos/dia-27.jpg",
+      "color": "#FF8FA3"
+    },
+    {
+      "id": 8,
+      "fecha": "2026-06-28",
+      "titulo": "Embajador de los Achuchones",
+      "emoji": "🤗",
+      "etiqueta": "Abrazos diplomáticos",
+      "mensaje": "Tus abrazos curan días enteros. Te los robo siempre que puedo.",
+      "foto": "assets/fotos/dia-28.jpg",
+      "color": "#FFB454"
+    },
+    {
+      "id": 9,
+      "fecha": "2026-06-29",
+      "titulo": "Coach de Primeros Pasos",
+      "emoji": "🏃",
+      "etiqueta": "Entrenador con paciencia infinita",
+      "mensaje": "Vas a ser tú quien la sostenga la primera vez que camine. Y yo voy a estar grabándolo.",
+      "foto": "assets/fotos/dia-29.jpg",
+      "color": "#FF8C66"
+    },
+    {
+      "id": 10,
+      "fecha": "2026-06-30",
+      "titulo": "El Papá Más Amado",
+      "emoji": "💖",
+      "etiqueta": "Cierre del mes",
+      "mensaje": "Este mes terminó pero el cariño no. Te amamos cada día, todos los días. Gracias por ser nuestro hogar.",
+      "foto": "assets/fotos/dia-30.jpg",
+      "color": "#FF6B9D"
+    }
+  ]
+}
