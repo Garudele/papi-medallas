@@ -1,6 +1,6 @@
 {
-  "destinatario": "Papá",
-  "subtitulo": "Tu mes de medallas",
+  "destinatario": "Esteban",
+  "subtitulo": "Tu mes de medallas, papá de Annia",
   "reconocimientos": [
     {
       "id": 1,
@@ -28,7 +28,7 @@
       "titulo": "Campeón del Brazo-Cuna",
       "emoji": "💪",
       "etiqueta": "Resistencia infinita",
-      "mensaje": "Tu brazo es el lugar más seguro del mundo. Verte cargarla me derrite.",
+      "mensaje": "Tu brazo es el lugar más seguro del mundo para Annia. Verte cargarla me derrite.",
       "foto": "assets/fotos/dia-23.jpg",
       "color": "#FFB454"
     },
@@ -88,7 +88,7 @@
       "titulo": "Coach de Primeros Pasos",
       "emoji": "🏃",
       "etiqueta": "Entrenador con paciencia infinita",
-      "mensaje": "Vas a ser tú quien la sostenga la primera vez que camine. Y yo voy a estar grabándolo.",
+      "mensaje": "Vas a ser tú quien sostenga a Annia la primera vez que camine. Y yo voy a estar grabándolo.",
       "foto": "assets/fotos/dia-29.jpg",
       "color": "#FF8C66"
     },
