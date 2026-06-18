@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Preview · Papi Medallas</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:
+      radial-gradient(at top left, #FFE3C6 0%, transparent 50%),
+      radial-gradient(at top right, #FFD6E0 0%, transparent 50%),
+      var(--bg);
+      padding-bottom: 60px;
+    }
+    .preview-header {
+      text-align: center;
+      padding: 30px 20px 16px;
+    }
+    .preview-header h1 {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .preview-header p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    .preview-stack {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .preview-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 28px 22px 24px;
+      text-align: center;
+    }
+    .pc-emoji {
+      font-size: 64px;
+      line-height: 1;
+      filter: drop-shadow(0 6px 12px rgba(255, 107, 107, 0.3));
+    }
+    .pc-etiqueta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 12px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .pc-titulo {
+      margin-top: 14px;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .pc-fecha {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .pc-foto {
+      margin: 18px 0 14px;
+      border-radius: 14px;
+      background: var(--bg-2);
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px;
+    }
+    .pc-mensaje {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .pc-tag {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 4px 10px;
+      background: var(--bg-2);
+      color: var(--muted);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-header">
+    <h1>👀 Preview · Papi Medallas</h1>
+    <p>Así se ve cada medalla al abrirse. Esto es solo para que vos revises antes del deploy real.</p>
+  </div>
+  <div class="preview-stack" id="stack"></div>
+
+  <script>
+    const data = [
+      { dia: 21, fecha: "Domingo · 21 de junio", emoji: "🥇", etiqueta: "Día del Padre",
+        titulo: "Mejor Papá del Universo", img: "Img 9 — ustedes dos posando, sonriendo",
+        mensaje: "Esta foto resume lo que eres: nuestra alegría. Hoy es tu día y quiero que sepas que ser papá te queda perfecto. Te amamos." },
+      { dia: 22, fecha: "Lunes · 22 de junio", emoji: "🍼", etiqueta: "La primera vez de muchas",
+        titulo: "El Primer Biberón", img: "Img 1 — primer biberón, en el sillón",
+        mensaje: "Una de sus primeras fotos juntos. Mírense — ahí empezó todo. Verte alimentarla por primera vez es un recuerdo que me guardo para siempre." },
+      { dia: 23, fecha: "Martes · 23 de junio", emoji: "🤗", etiqueta: "Abrazo nivel papá",
+        titulo: "Brazos de Hogar", img: "Img 3 — abrazada posando",
+        mensaje: "Cuando la abrazas así, ella sabe que está en casa. Y yo también. Tus brazos son nuestro lugar seguro." },
+      { dia: 24, fecha: "Miércoles · 24 de junio", emoji: "🎈", etiqueta: "Diversión modo papá",
+        titulo: "Compañero de Aventuras", img: "Img 4 — alberca de pelotas",
+        mensaje: "Cualquier lugar contigo es una aventura para ella. Ojalá nunca pierdas las ganas de jugar tan bonito." },
+      { dia: 25, fecha: "Jueves · 25 de junio", emoji: "😴", etiqueta: "Manos que duermen bebés",
+        titulo: "El Mejor Rebozo del Mundo", img: "Img 5 — rebozo, mamola, dormida, él sonríe",
+        mensaje: "Mírate ahí, sonriendo mientras ella se queda dormida pegadita a ti. Esa sonrisa tuya es de \"no quiero estar en otro lado\". Ni yo tampoco." },
+      { dia: 26, fecha: "Viernes · 26 de junio", emoji: "💤", etiqueta: "Sueño profundo garantizado",
+        titulo: "Pecho-Cuna Oficial", img: "Img 2 — recargada en pecho, dormida",
+        mensaje: "Tu pecho es donde ella sueña mejor. Y desde aquí veo que tú también descansas distinto cuando la tienes así." },
+      { dia: 27, fecha: "Sábado · 27 de junio", emoji: "🎅", etiqueta: "Recuerdo de oro",
+        titulo: "Papá de Postal Navideña", img: "Img 7 — Annia vestida de Santa",
+        mensaje: "Su primera Navidad y tú cargándola así. Esta foto es de las que vamos a enseñar mil veces. La miras y se te entibia el corazón, ¿verdad?" },
+      { dia: 28, fecha: "Domingo · 28 de junio", emoji: "🏊", etiqueta: "Salvavidas profesional",
+        titulo: "Capitán del Chapuzón", img: "Img 10 — alberca real, ambos",
+        mensaje: "Contigo nada le da miedo. Ese día en el agua fue suyo porque tú estabas ahí. Gracias por ser su escudo siempre." },
+      { dia: 29, fecha: "Lunes · 29 de junio", emoji: "🥄", etiqueta: "Asiento de primera fila",
+        titulo: "Testigo de Primeras Veces", img: "Img 8 — primera comida",
+        mensaje: "Tú estuviste ahí cuando probó comida por primera vez. Estás ahí siempre. Para todo. Eso es ser papá de verdad." },
+      { dia: 30, fecha: "Martes · 30 de junio", emoji: "💖", etiqueta: "Esta semana terminó pero esto no",
+        titulo: "Tu Mejor Obra", img: "Img 11 — Annia sola carcajeando",
+        mensaje: "Mira esta carcajada. Eso eres tú haciéndola feliz. Esta semana termina pero esto sigue cada día. Gracias por ser su papá y mi compañero. Te amamos." }
+    ];
+
+    const stack = document.getElementById('stack');
+    for (const m of data) {
+      const div = document.createElement('div');
+      div.className = 'preview-card';
+      div.innerHTML = `
+        <div class="pc-emoji">${m.emoji}</div>
+        <div class="pc-etiqueta">${m.etiqueta}</div>
+        <div class="pc-titulo">${m.titulo}</div>
+        <div class="pc-fecha">${m.fecha}</div>
+        <div class="pc-foto">📷 ${m.img}</div>
+        <div class="pc-mensaje">${m.mensaje}</div>
+        <div class="pc-tag">Día ${m.dia}</div>
+      `;
+      stack.appendChild(div);
+    }
+  </script>
+</body>
+</html>
