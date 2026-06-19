@@ -89,9 +89,19 @@
       border-radius: 14px;
       background: var(--bg-2);
       aspect-ratio: 4 / 3;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .pc-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: var(--bg-2);
+    }
+    .pc-foto.placeholder {
       color: var(--muted);
       font-size: 14px;
       font-weight: 600;
@@ -124,34 +134,34 @@
   <script>
     const data = [
       { dia: 21, fecha: "Domingo · 21 de junio", emoji: "🥇", etiqueta: "Día del Padre",
-        titulo: "Mejor Papá del Universo", img: "Img 3 — la tiene abrazada, posando, sonriendo",
+        titulo: "Mejor Papá del Universo", imgN: 3,
         mensaje: "Esta foto resume lo que eres: nuestra alegría. Hoy es tu día y quiero que sepas que ser papá te queda perfecto. Te amamos." },
-      { dia: 22, fecha: "Lunes · 22 de junio", emoji: "🍼", etiqueta: "La primera vez de muchas",
-        titulo: "El Primer Biberón", img: "Img 1 — primer biberón, en el sillón",
-        mensaje: "Una de sus primeras fotos juntos. Mírense — ahí empezó todo. Verte alimentarla por primera vez es un recuerdo que me guardo para siempre." },
-      { dia: 23, fecha: "Martes · 23 de junio", emoji: "🤱", etiqueta: "Manos que duermen bebés",
-        titulo: "El Mejor Rebozo del Mundo", img: "Img 5 — rebozo, mamola, dormida, él sonríe",
-        mensaje: "Mírate ahí, sonriendo mientras ella se queda dormida pegadita a ti. Esa sonrisa tuya es de \"no quiero estar en otro lado\". Ni yo tampoco." },
+      { dia: 22, fecha: "Lunes · 22 de junio", emoji: "🍼", etiqueta: "Equipo de toda la vida",
+        titulo: "Hora del Biberón", imgN: 1,
+        mensaje: "Una de sus primeras fotos juntos. La forma en que la sostienes, la confianza con la que ella se deja querer. Así han sido desde el principio." },
+      { dia: 23, fecha: "Martes · 23 de junio", emoji: "🤱", etiqueta: "Pose tímida, abrazo seguro",
+        titulo: "El Mejor Rebozo del Mundo", imgN: 5,
+        mensaje: "La traes pegadita, ella ya casi dormida con su mamila en la mano. Y tú, posando medio tímido para la foto. Así eres — papá silencioso pero ahí, siempre." },
       { dia: 24, fecha: "Miércoles · 24 de junio", emoji: "🎈", etiqueta: "Diversión modo papá",
-        titulo: "Compañero de Aventuras", img: "Img 4 — alberca de pelotas",
+        titulo: "Compañero de Aventuras", imgN: 4,
         mensaje: "Cualquier lugar contigo es una aventura para ella. Ojalá nunca pierdas las ganas de jugar tan bonito." },
       { dia: 25, fecha: "Jueves · 25 de junio", emoji: "💤", etiqueta: "Sueño profundo garantizado",
-        titulo: "Pecho-Cuna Oficial", img: "Img 2 — recargada en pecho, dormida",
+        titulo: "Pecho-Cuna Oficial", imgN: 2,
         mensaje: "Tu pecho es donde ella sueña mejor. Y desde aquí veo que tú también descansas distinto cuando la tienes así." },
       { dia: 26, fecha: "Viernes · 26 de junio", emoji: "😊", etiqueta: "Tu obra de cada día",
-        titulo: "Tu Sonrisa, Mi Sonrisa", img: "Img 6 — Annia sola, sonriendo a la cámara",
+        titulo: "Tu Sonrisa, Mi Sonrisa", imgN: 6,
         mensaje: "Esta sonrisa la pusiste tú. Cada día le das motivos para sonreír así, y a mí me das motivos para enamorarme más." },
       { dia: 27, fecha: "Sábado · 27 de junio", emoji: "🎅", etiqueta: "Recuerdo de oro",
-        titulo: "Papá de Postal Navideña", img: "Img 7 — Annia vestida de Santa, cargada",
+        titulo: "Papá de Postal Navideña", imgN: 7,
         mensaje: "Su primera Navidad y tú cargándola así. Esta foto es de las que vamos a enseñar mil veces. La miras y se te entibia el corazón, ¿verdad?" },
       { dia: 28, fecha: "Domingo · 28 de junio", emoji: "🏊", etiqueta: "Salvavidas profesional",
-        titulo: "Capitán del Chapuzón", img: "Img 9 — alberca real, ambos en el agua",
+        titulo: "Capitán del Chapuzón", imgN: 9,
         mensaje: "Contigo nada le da miedo. Ese día en el agua fue suyo porque tú estabas ahí. Gracias por ser su escudo siempre." },
-      { dia: 29, fecha: "Lunes · 29 de junio", emoji: "🥄", etiqueta: "Asiento de primera fila",
-        titulo: "Testigo de Primeras Veces", img: "Img 8 — primera comida",
-        mensaje: "Tú estuviste ahí cuando probó comida por primera vez. Estás ahí siempre. Para todo. Eso es ser papá de verdad." },
+      { dia: 29, fecha: "Lunes · 29 de junio", emoji: "🥩", etiqueta: "Asiento de primera fila",
+        titulo: "Su Primera Carnita", imgN: 8,
+        mensaje: "La primera vez que probó carne. Y tú ahí en primera fila, como siempre. Vas a estar para todas sus primeras veces — eso es ser papá." },
       { dia: 30, fecha: "Martes · 30 de junio", emoji: "💖", etiqueta: "Cierre con luz",
-        titulo: "Tu Mejor Obra", img: "Img 10 — Annia solita sonriendo",
+        titulo: "Tu Mejor Obra", imgN: 10,
         mensaje: "Mira esta cara. Eso eres tú haciéndola feliz. Esta semana termina pero esto sigue cada día. Gracias por ser su papá y mi compañero. Te amamos." }
     ];
 
@@ -164,7 +174,7 @@
         <div class="pc-etiqueta">${m.etiqueta}</div>
         <div class="pc-titulo">${m.titulo}</div>
         <div class="pc-fecha">${m.fecha}</div>
-        <div class="pc-foto">📷 ${m.img}</div>
+        <div class="pc-foto"><img src="assets/preview-fotos/imagen${m.imgN}.jpg" alt="Imagen ${m.imgN}" loading="lazy"></div>
         <div class="pc-mensaje">${m.mensaje}</div>
         <div class="pc-tag">Día ${m.dia}</div>
       `;

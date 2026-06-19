@@ -5,3 +5,4 @@ node_modules/
 # Plaintext (origen para encriptar — NUNCA pushear)
 data/plaintext.json
 assets/plaintext-fotos/
+assets/preview-fotos/

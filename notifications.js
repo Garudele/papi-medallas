@@ -108,4 +108,27 @@ document.addEventListener('app-unlocked', (e) => {
 
   btn.addEventListener('click', onClick);
   reflectState();
+
+  // Botón de prueba: aparece con ?test=1 en URL
+  const params = new URLSearchParams(location.search);
+  if (params.get('test') === '1') {
+    const testBtn = document.getElementById('noti-test');
+    testBtn.style.display = 'inline-block';
+    testBtn.addEventListener('click', async () => {
+      if (Notification.permission !== 'granted') {
+        const perm = await Notification.requestPermission();
+        if (perm !== 'granted') return;
+      }
+      const reg = await navigator.serviceWorker.ready;
+      const sample = decryptedData.reconocimientos[0];
+      await reg.showNotification(`${sample.emoji} Nueva medalla para ti`, {
+        body: sample.titulo,
+        icon: 'assets/icons/icon-192.png',
+        badge: 'assets/icons/icon-192.png',
+        tag: 'papi-test',
+        data: { id: sample.id, fecha: sample.fecha }
+      });
+      setStatus('🚀 Notificación enviada — mira tu muñeca', 'ok');
+    });
+  }
 });
