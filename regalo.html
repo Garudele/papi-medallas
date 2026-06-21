@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Un regalo para ti, papá 💛</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Un regalo te espera, papá 🎁">
+  <meta property="og:description" content="Tu semana de medallas — toca para abrir">
+  <meta property="og:image" content="https://garudele.github.io/papi-medallas/assets/share-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://garudele.github.io/papi-medallas/regalo.html">
+  <meta property="og:locale" content="es_MX">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Un regalo te espera, papá 🎁">
+  <meta name="twitter:description" content="Tu semana de medallas — toca para abrir">
+  <meta name="twitter:image" content="https://garudele.github.io/papi-medallas/assets/share-card.png">
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg">
+
+  <style>
+    :root {
+      --accent: #FF6B6B;
+      --accent-2: #F4B942;
+      --bg: #FFF6EC;
+      --text: #3D2817;
+      --surface: #FFFFFF;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100dvh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(at 20% 20%, #FFE3C6 0%, transparent 50%),
+        radial-gradient(at 80% 30%, #FFD6E0 0%, transparent 55%),
+        radial-gradient(at 50% 90%, #FFE08A 0%, transparent 50%),
+        var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      min-height: 100dvh;
+      position: relative;
+    }
+
+    .escena {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .saludo {
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .nombre {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: #8C7A6B;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+    }
+
+    .caja-wrap {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .caja {
+      font-size: 140px;
+      line-height: 1;
+      display: inline-block;
+      filter: drop-shadow(0 16px 28px rgba(255, 107, 107, 0.35));
+      opacity: 0;
+      transform: scale(0.4);
+      animation:
+        bounceIn 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.3) 1.2s forwards,
+        float 3s ease-in-out 2.1s infinite,
+        shake 0.4s ease 4.5s 3,
+        explode 0.6s ease 5.9s forwards;
+    }
+
+    .sparkle {
+      position: absolute;
+      font-size: 32px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .sparkle.s1 { top: 10%; left: 10%; animation: pop 0.9s ease 6.0s forwards; }
+    .sparkle.s2 { top: 5%; right: 15%; animation: pop 0.9s ease 6.05s forwards; }
+    .sparkle.s3 { top: 50%; left: -5%; animation: pop 0.9s ease 6.1s forwards; }
+    .sparkle.s4 { top: 55%; right: -5%; animation: pop 0.9s ease 6.15s forwards; }
+    .sparkle.s5 { bottom: 5%; left: 20%; animation: pop 0.9s ease 6.2s forwards; }
+    .sparkle.s6 { bottom: 0%; right: 22%; animation: pop 0.9s ease 6.25s forwards; }
+    .sparkle.s7 { top: 30%; left: 30%; animation: pop 0.9s ease 6.0s forwards; }
+    .sparkle.s8 { top: 35%; right: 28%; animation: pop 0.9s ease 6.05s forwards; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.2) 6.6s forwards;
+      margin-top: 24px;
+    }
+
+    .reveal-titulo {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .reveal-sub {
+      font-size: 15px;
+      color: #8C7A6B;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto 28px;
+    }
+
+    .btn-abrir {
+      display: inline-block;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      box-shadow: 0 12px 26px rgba(255, 107, 107, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: pulse-btn 2.4s ease 7.5s infinite;
+    }
+    .btn-abrir:active { transform: scale(0.97); }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      60% { opacity: 1; transform: scale(1.15); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-12deg); }
+      75% { transform: rotate(12deg); }
+    }
+    @keyframes explode {
+      to { transform: scale(2); opacity: 0; }
+    }
+    @keyframes pop {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1.4); }
+      100% { opacity: 0; transform: scale(1.8) translate(var(--dx, 30px), var(--dy, 30px)); }
+    }
+    @keyframes pulse-btn {
+      0%, 100% { box-shadow: 0 12px 26px rgba(255, 107, 107, 0.4); }
+      50% { box-shadow: 0 12px 38px rgba(255, 107, 107, 0.65), 0 0 0 8px rgba(255, 107, 107, 0.08); }
+    }
+
+    @media (max-width: 380px) {
+      .nombre { font-size: 30px; }
+      .caja { font-size: 110px; }
+      .caja-wrap { width: 180px; height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="escena">
+    <p class="saludo">Para ti, papá</p>
+    <h1 class="nombre">Esteban</h1>
+    <p class="tagline">Tienes un regalo esperándote 💛</p>
+
+    <div class="caja-wrap">
+      <span class="sparkle s1">✨</span>
+      <span class="sparkle s2">💛</span>
+      <span class="sparkle s3">🥇</span>
+      <span class="sparkle s4">✨</span>
+      <span class="sparkle s5">💖</span>
+      <span class="sparkle s6">🎉</span>
+      <span class="sparkle s7">⭐</span>
+      <span class="sparkle s8">✨</span>
+      <div class="caja">🎁</div>
+    </div>
+
+    <div class="reveal">
+      <h2 class="reveal-titulo">Tu semana de medallas</h2>
+      <p class="reveal-sub">10 días, 10 razones por las que amamos que seas nuestro papá.</p>
+      <a href="./" class="btn-abrir">Abrir mi regalo 💛</a>
+    </div>
+  </div>
+</body>
+</html>

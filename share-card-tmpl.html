@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 1200px; height: 630px;
+  font-family: -apple-system, "Segoe UI", system-ui, "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  background:
+    radial-gradient(at 20% 20%, #FFE3C6 0%, transparent 60%),
+    radial-gradient(at 80% 30%, #FFD6E0 0%, transparent 60%),
+    radial-gradient(at 50% 95%, #FFE08A 0%, transparent 55%),
+    #FFF6EC;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.card {
+  width: 92%; max-width: 1080px; text-align: center;
+  padding: 60px 60px;
+  position: relative;
+}
+.medal {
+  font-size: 180px; line-height: 1;
+  filter: drop-shadow(0 18px 32px rgba(255,107,107,0.4));
+  margin-bottom: 20px;
+}
+.eyebrow {
+  font-size: 26px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: #FF6B6B; font-weight: 800; margin-bottom: 10px;
+}
+.title {
+  font-size: 76px; font-weight: 900; line-height: 1.05;
+  background: linear-gradient(135deg, #FF6B6B, #F4B942);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+.sub {
+  font-size: 28px; color: #5D4A3A; font-weight: 500;
+  max-width: 800px; margin: 0 auto;
+}
+.chip {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  background: #FF6B6B; color: #fff;
+  border-radius: 999px;
+  font-size: 22px; font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.sparkle { position: absolute; font-size: 56px; opacity: 0.85; }
+.s1 { top: 8%; left: 8%; }
+.s2 { top: 12%; right: 9%; }
+.s3 { bottom: 12%; left: 11%; }
+.s4 { bottom: 8%; right: 8%; }
+</style></head>
+<body>
+  <span class="sparkle s1">✨</span>
+  <span class="sparkle s2">💛</span>
+  <span class="sparkle s3">🎉</span>
+  <span class="sparkle s4">✨</span>
+  <div class="card">
+    <div class="medal">🥇</div>
+    <div class="eyebrow">Para ti, papá</div>
+    <div class="title">Un regalo te espera</div>
+    <div class="sub">Tu semana de medallas — toca para abrir 💛</div>
+    <div class="chip">🎁 Abrir mi regalo</div>
+  </div>
+</body></html>
