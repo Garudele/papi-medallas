@@ -1,4 +1,4 @@
-const CACHE = 'papi-medallas-v3';
+const CACHE = 'papi-medallas-v4';
 const ASSETS = [
   './',
   'index.html',
@@ -43,6 +43,24 @@ self.addEventListener('notificationclick', (e) => {
 
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  const isHtml = e.request.mode === 'navigate' || url.pathname.endsWith('.html');
+
+  if (isHtml) {
+    // Network-first para HTML: siempre intenta fresco, cache solo si falla
+    e.respondWith(
+      fetch(e.request).then((resp) => {
+        if (resp && resp.status === 200) {
+          const clone = resp.clone();
+          caches.open(CACHE).then((c) => c.put(e.request, clone));
+        }
+        return resp;
+      }).catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // Stale-while-revalidate para assets estáticos
   e.respondWith(
     caches.match(e.request).then((cached) => {
       const fetchPromise = fetch(e.request).then((resp) => {
